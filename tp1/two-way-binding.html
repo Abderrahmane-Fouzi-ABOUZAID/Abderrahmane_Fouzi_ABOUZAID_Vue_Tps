@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Manipulation de vue</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <style>
+        .blue{
+            color: blue;
+        }
+        .green{
+            color: green;
+        }
+        .showpar{
+            display: block;
+        }
+        .hide{
+            display: none;
+        }
+        </style>
+    </head>
+    <body>
+
+        <div id="monapp">
+            <ul>
+                <li>Couleur de la police : 
+                    <label >blue<input type="radio" name="color" v-model="selectedColor" @change="updateColor" value="blue">                    
+                        <label >green<input type="radio" name="color" v-model="selectedColor" @change="updateColor" value="green"> <br><br>
+                            <li>Afficher / Cacher le paragraphe : <input type="checkbox" @change="show = !show" ></li>
+            </ul>      <br><br>
+            <p :class="[textColorClass, { showpar: show, hide: !show }]">
+                    :wLoremLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+
+        </div>
+
+        <script>
+        const appli = {
+            data () {
+                return {
+                    selectedColor: '',
+                    show: true, 
+                }
+            },
+            computed: {
+                textColorClass(){
+                    return this.selectedColor
+                }
+                
+            },
+            methods: {
+                updateColor(){
+                    console.log(this.updateColor())
+                }
+            }
+
+        };
+
+        Vue.createApp(appli).mount("#monapp");
+        </script>
+
+    </body>
+</html>

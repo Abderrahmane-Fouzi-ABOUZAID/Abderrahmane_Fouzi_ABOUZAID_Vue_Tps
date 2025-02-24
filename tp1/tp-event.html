@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <style>
+            .show{
+                display: block;
+            }
+            .hide{
+                display: none;   
+            }
+        </style>
+        <meta charset="utf-8" />
+        <title>Manipulation de vue</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+
+        <div id="monapp">
+            <button @click="title = 'cliqué !'" >{{title}}</button><br><br>	
+            <button @click="compteur++">++</button>
+            <p>{{compteur}}</p>
+            <button @click="compteur--">--</button>
+            <br><br>
+            <input type="text" @keydown.space="showWarning = true">
+            <p :class="{show : showWarning, hide : !showWarning}">Do not enter spaces ! </p>
+            
+        </div>
+    
+
+        <script>
+
+        const appli = {
+            data () {
+                return {
+                    showWarning : false,
+                    title : "clique moi !",
+                    compteur : 0,
+                }
+            },
+        }
+        Vue.createApp(appli).mount("#monapp");
+        </script>
+
+    </body>
+</html>
